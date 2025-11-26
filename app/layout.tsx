@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -25,8 +26,41 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-50 dark:bg-black`}
       >
+        <header className="border-b border-zinc-200 bg-white/80 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/80">
+          <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+            <Link
+              href="/"
+              className="text-sm font-semibold tracking-tight text-zinc-900 dark:text-zinc-50"
+            >
+              Next.js Demo
+            </Link>
+            <nav className="flex items-center gap-4 text-sm text-zinc-600 dark:text-zinc-300">
+              <Link
+                href="/"
+                className="rounded-full px-3 py-1 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-800"
+                prefetch={true}
+              >
+                首页
+              </Link>
+              <Link
+                href="/about"
+                className="rounded-full px-3 py-1 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-800"
+                prefetch={true}
+              >
+                关于
+              </Link>
+              <Link
+                href="/blog"
+                className="rounded-full px-3 py-1 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-800"
+                prefetch={true}
+              >
+                Blog
+              </Link>
+            </nav>
+          </div>
+        </header>
         {children}
       </body>
     </html>
